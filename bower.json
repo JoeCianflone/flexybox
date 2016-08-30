@@ -1,0 +1,28 @@
+{
+  "name": "FlexyBox",
+  "authors": [
+    "Joe Cianflone <joe@cianflone.co>"
+  ],
+  "description": "Flexbox Grid built on Susy",
+  "main": "flexybox.scss",
+  "keywords": [
+    "flexbox",
+    "css",
+    "sass",
+    "susy",
+    "grids"
+  ],
+  "dependencies": {
+    "susy": "2.2.*"
+  },
+  "license": "MIT",
+  "homepage": "flexybox.github.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    ".editorconfig"
+    "test",
+    "tests"
+  ]
+}

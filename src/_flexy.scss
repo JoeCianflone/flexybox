@@ -1,0 +1,44 @@
+@include 'felxy-vars';
+@include 'flexy-private';
+
+@mixin flexygrid-settings($overrides: ()) {
+   $fopts: map-merge($fopts, $overrides);
+}
+
+@mixin flexygrid($list: null) {
+   align-content: flexOpt(align-content);
+   align-items: flexOpt(align-items);
+   display: flex;
+   justify-content: flexOpt(justify-content);
+   flex-flow: flexOpt(direction) flexOpt(wrap);
+
+     @each $item in $list {
+        @include justify($item);
+        @include align($item);
+        @include content($item);
+        @include direction($item);
+        @include wrap($item);
+     }
+}
+
+@mixin flexy-item($cols, $overrides: null) {
+   @include gutters;
+   align-self: flexOpt(align-self);
+   flex: flexOpt(flex-grow) flexOpt(flex-shrink) span($cols of flexOpt(columns) no-gutters);
+   width: span($cols of flexOpt(columns) no-gutters);
+
+     @each $item in $overrides {
+        @include alignSelf($item);
+        @include grow($item);
+        @include shrink($item);
+        @include order($item);
+     }
+}
+
+@mixin flexy-push($cols) {
+   @include push($cols of flexOpt(columns));
+}
+
+@mixin flexy-pull($cols) {
+   @include pull($cols of flexOpt(columns));
+}
