@@ -1,6 +1,6 @@
 {
   "name": "flexybox-sass",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The flexbox grid system built on Susy",
   "author": "Joe Cianflone <joe@cianflone.co>",
   "main": "_flexybox.scss",
