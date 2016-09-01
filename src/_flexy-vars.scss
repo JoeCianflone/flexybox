@@ -1,3 +1,5 @@
+@import '../../susy/sass/susy';
+
 $fopts: (
    wrap:            wrap,
    columns:         12,
@@ -9,70 +11,66 @@ $fopts: (
    gutters:         0.25,
    order:           0,
    flex-grow:       0,
-   flex-shrink:     0,
-   align-self:      auto,
+   flex-shrink:     1,
+   align-self:      auto
 ) !global;
 
-$directionMap: (
-  row: "row",
-  column: "column",
-  row-reverse: "row-reverse",
-  column-reverse: "column-reverse",
+$gridSettings: (
+   directions: (
+      row: row,
+      column: column,
+      row-reverse: row-reverse,
+      column-reverse: column-reverse
+   ),
+   wrapper: (
+      wrap: wrap,
+      no-wrap: nowrap,
+      wrap-reverse: wrap-reverse
+   ),
+   justify: (
+      end:     flex-end,
+      start:   flex-start,
+      around:  space-around,
+      center:  center,
+      between: space-between
+   ),
+   align: (
+      top:      flex-start,
+      fill:     stretch,
+      middle:   center,
+      bottom:   flex-end,
+      baseline: baseline
+   ),
+   content: (
+      content-top:     flex-start,
+      content-fill:    stretch,
+      content-middle:  center,
+      content-bottom:  flex-end,
+      content-around:  space-around,
+      content-between: space-between
+   )
 );
 
-$alignSelfMap: (
-  top: "flex-start",
-  bottom: "flex-end",
-  middle: "center",
-  baseline: "baseline",
-  fill: "stretch",
+$columnSettings: (
+   alignSelf: (
+      top: flex-start,
+      bottom: flex-end,
+      middle: center,
+      baseline: baseline,
+      fill: stretch,
+   ),
+   growth: (
+      no-grow: 0,
+      normal: 1,
+      double: 2,
+      triple: 3
+   ),
+   shrink: (
+      no-shrink: 0,
+      shrink: 1
+   ),
+   order: (
+      first: -1,
+      last: 1
+   )
 );
-
-$growMap: (
-  no-grow: 0,
-  normal: 1,
-  double: 2,
-  triple: 3
-);
-
-$shrinkMap: (
-  no-shrink: 0,
-  shrink: 1
-);
-
-$orderMap: (
-  first: -1,
-  last: 1
-);
-$wrapMap: (
-  wrap: "wrap",
-  nowrap: "nowrap",
-  wrap-reverse: "wrap-reverse",
-);
-
-$justifyMap: (
-  end:     "flex-end",
-  start:   "flex-start",
-  around:  "space-around",
-  center:  "center",
-  between: "space-between",
-);
-
-$alignMap: (
-  top:      "flex-start",
-  fill:     "stretch",
-  middle:   "center",
-  bottom:   "flex-end",
-  baseline: "baseline",
-);
-
-$contentMap: (
-  content-top:     "flex-start",
-  content-fill:    "stretch",
-  content-middle:  "center",
-  content-bottom:  "flex-end",
-  content-around:  "space-around",
-  content-between: "space-between",
-);
-
-

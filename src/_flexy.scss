@@ -1,38 +1,59 @@
-@include 'felxy-vars';
-@include 'flexy-private';
+@import 'flexy-vars';
+@import 'flexy-private';
+
+$enableBorderBox: true;
 
 @mixin flexygrid-settings($overrides: ()) {
-   $fopts: map-merge($fopts, $overrides);
+   $fopts: map-merge($fopts, $overrides) !global;
+
+   @include layout((
+     columns: map-get($fopts, columns),
+     gutter-position: map-get($fopts, gutter-position),
+     gutters: map-get($fopts, gutters),
+     global-box-sizing: border-box
+   ));
+
+   @include setBorderBox();
 }
 
-@mixin flexygrid($list: null) {
-   align-content: flexOpt(align-content);
-   align-items: flexOpt(align-items);
+
+@mixin flexygrid($overrides...) {
    display: flex;
-   justify-content: flexOpt(justify-content);
-   flex-flow: flexOpt(direction) flexOpt(wrap);
 
-     @each $item in $list {
-        @include justify($item);
-        @include align($item);
-        @include content($item);
-        @include direction($item);
-        @include wrap($item);
-     }
+   flex-flow:       map-get($fopts, direction) map-get($fopts, wrap);
+   align-items:     map-get($fopts, align-items);
+   align-content:   map-get($fopts, align-content);
+   justify-content: map-get($fopts, justify-content);
+
+   @each $item in $overrides {
+      align-items:     map-deep-get($gridSettings, align, $item);
+      align-content:   map-deep-get($gridSettings, content, $item);
+      flex-direction:  map-deep-get($gridSettings, directions, $item);
+      flex-wrap:       map-deep-get($gridSettings, wrapper, $item);
+      justify-content: map-deep-get($gridSettings, justify, $item);
+   }
 }
 
-@mixin flexy-item($cols, $overrides: null) {
-   @include gutters;
-   align-self: flexOpt(align-self);
-   flex: flexOpt(flex-grow) flexOpt(flex-shrink) span($cols of flexOpt(columns) no-gutters);
-   width: span($cols of flexOpt(columns) no-gutters);
+@mixin flexy-item($cols, $overrides...) {
+   @if (index($overrides, no-gutters) == null) {
+      @include gutters;
+   }
 
-     @each $item in $overrides {
-        @include alignSelf($item);
-        @include grow($item);
-        @include shrink($item);
-        @include order($item);
-     }
+   @if (index($overrides, no-space) == null) {
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+   }
+
+   align-self: flexOpt(align-self);
+   flex:       flexOpt(flex-grow) flexOpt(flex-shrink) span($cols of flexOpt(columns));
+   max-width:      span($cols of flexOpt(columns));
+
+   @each $item in $overrides {
+      order:       map-deep-get($columnSettings, order, $item);
+      flex-grow:   map-deep-get($columnSettings, growth, $item);
+      align-self:  map-deep-get($columnSettings, alignSelf, $item);
+      flex-shrink: map-deep-get($columnSettings, shrink, $item);
+   }
 }
 
 @mixin flexy-push($cols) {
@@ -41,4 +62,19 @@
 
 @mixin flexy-pull($cols) {
    @include pull($cols of flexOpt(columns));
+}
+
+@mixin setBorderBox() {
+   @if ($enableBorderBox) {
+      * {
+         box-sizing: inherit;
+         &:before, &:after {
+            box-sizing: inherit;
+         }
+      }
+
+      html {
+         box-sizing: border-box;
+      }
+   }
 }

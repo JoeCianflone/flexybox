@@ -6,52 +6,10 @@
    @error "#{$key} not found in fopts";
 }
 
-@mixin alignSelf($item) {
-   @include _parse-map-setting($alignSelfMap, $item, align-self);
-}
-
-@mixin grow($item) {
-   @include _parse-map-setting($growMap, $item, flex-grow);
-}
-
-@mixin shrink($item) {
-   @include _parse-map-setting($shrinkMap, $item, flex-shrink);
-}
-
-@mixin order($item) {
-   @include _parse-map-setting($orderMap, $item, order);
-}
-
-@mixin justify($item) {
-   @include _parse-map-setting($justifyMap, $item, justify-content);
-}
-
-@mixin align($item) {
-   @include _parse-map-setting($alignMap, $item, align-items);
-}
-
-@mixin direction($item) {
-   @include _parse-map-setting($directionMap, $item, flex-direction);
-}
-
-@mixin wrap($item) {
-   @include _parse-map-setting($directionMap, $item, flex-wrap);
-}
-
-@mixin content($item) {
-   @include _parse-map-setting($contentMap, $item, align-content);
-}
-
-@mixin _parse-map-setting($map, $item, $type) {
-   @if (map-has-key($map, $item)) {
-      #{$type}: #{map-get($map, $item)};
+@function map-deep-get($map, $keys...) {
+   @each $key in $keys {
+      $map: map-get($map, $key);
    }
+
+   @return $map;
 }
-
-@include layout((
-   columns: flexOpt(columns),
-   gutter-position: flexOpt(gutter-position),
-   gutters: flexOpt(gutters),
-   global-box-sizing: border-box
-));
-
