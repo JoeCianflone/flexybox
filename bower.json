@@ -4,7 +4,7 @@
     "Joe Cianflone <joe@cianflone.co>"
   ],
   "description": "Flexbox Grid built on Susy",
-  "main": "flexybox.scss",
+  "main": "_flexybox.scss",
   "keywords": [
     "flexbox",
     "css",

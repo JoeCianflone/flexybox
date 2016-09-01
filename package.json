@@ -1,0 +1,29 @@
+{
+  "name": "flexybox",
+  "version": "0.0.4",
+  "description": "The flexbox grid system built on Susy",
+  "author": "Joe Cianflone <joe@cianflone.co>",
+  "main": "_flexybox.scss",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joecianflone/flexybox.git"
+  },
+  "keywords": [
+    "flexbox",
+    "css",
+    "sass",
+    "susy",
+    "grids"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joecianflone/flexybox/issues"
+  },
+  "devDependencies": {
+    "susy": "^2.2.*"
+  },
+  "homepage": "https://github.com/joecianflone/flexybox#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
