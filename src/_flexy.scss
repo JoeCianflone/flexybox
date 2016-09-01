@@ -45,8 +45,13 @@ $enableBorderBox: true;
    }
 
    align-self: flexOpt(align-self);
-   flex:       flexOpt(flex-grow) flexOpt(flex-shrink) span($cols of flexOpt(columns));
-   max-width:      span($cols of flexOpt(columns));
+
+   @if ($cols == auto) {
+      flex:       flexOpt(flex-grow) flexOpt(flex-shrink) auto);
+   } @else {
+      flex:       flexOpt(flex-grow) flexOpt(flex-shrink) span($cols of flexOpt(columns));
+      max-width:  span($cols of flexOpt(columns));
+   }
 
    @each $item in $overrides {
       order:       map-deep-get($columnSettings, order, $item);
