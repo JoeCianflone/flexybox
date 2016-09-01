@@ -1,4 +1,4 @@
-Flexybox is the flexbox grid builder built on top of the Susy grid system. The awesome thing about Susy is that it does all the math for you...and (math is hard)[http://farm9.staticflickr.com/8458/8071526975_7bc933b835.jpg].
+Flexybox is the flexbox grid builder built on top of the Susy grid system. The awesome thing about Susy is that it does all the math for you...and [math is hard](http://farm9.staticflickr.com/8458/8071526975_7bc933b835.jpg).
 
 ## Installing Flexybox
 
@@ -19,18 +19,18 @@ npm install flexybox-sass --save
 First step is defining some settings, well, ok you don't really need to do this since we start you off with some sensible defaults. Let's take a look at our defaults:
 
 ```scss
-   wrap:            wrap,
-   columns:         12,
-   direction:       row,
-   align-items:     flex-start,
-   align-content:   center,
-   justify-content: flex-start,
-   gutter-position: split,
-   gutters:         0.25,
-   order:           0,
-   flex-grow:       0,
-   flex-shrink:     1,
-   align-self:      auto
+wrap:            wrap,
+columns:         12,
+direction:       row,
+align-items:     flex-start,
+align-content:   center,
+justify-content: flex-start,
+gutter-position: split,
+gutters:         0.25,
+order:           0,
+flex-grow:       0,
+flex-shrink:     1,
+align-self:      auto
 ```
 
 These are our defaults, and you're not stuck with them.
@@ -40,7 +40,7 @@ So let's start working on our grid. The first thing you need to do is to pull in
 ```scss
 @import '../path/to/files/flexybox/flexy'; // pull in the sass
 
-@include flexygrid-settings(); // initalize everything
+@include flexygrid-settings(); // initialize everything
 ```
 
 Now remember those default settings? Cool, cool. If you don't like them here's your chance to reset them.  Just pass `flexygrid-settings` a map of the stuff you want to override:
